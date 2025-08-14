@@ -12,7 +12,7 @@ export default function ModalRegister() {
   const [buyCap, setBuyCap] = useState(false);
   // add more state variables:
   const [plan, setPlan] = useState("");
-  const [planError, setPLanError] = useState(false);
+  const [planError, setPlanError] = useState(false);
 
   const [gender, setGender] = useState("");
   const [genderError, setgenderError] = useState(false);
@@ -30,7 +30,7 @@ export default function ModalRegister() {
   };
 
   const selectPlanOnChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setPLanError(false);
+    setPlanError(false);
     setPlan(event.target.value);
   };
 
@@ -77,7 +77,7 @@ export default function ModalRegister() {
 
   // ----------------------------------------------------------------
 
-  const registerBtnOnClick = () => {
+ const registerBtnOnClick = () => {
     let fnameOk = true;
     let lnameOk = true;
     let planOk = true;
@@ -87,24 +87,22 @@ export default function ModalRegister() {
       fnameOk = false;
       setFnameError(true);
     }
-
-    if( lname === "") {
+    if (lname === "") {
       lnameOk = false;
       setLnameError(true);
     }
-
-    if( plan === ""){
+    if (plan === ""){
       planOk = false;
-      setPLanError(true);
-    }
-    if (fnameOk) {
-      alert(
-        `Registration complete. Please pay money for ${computeTotalPayment().toLocaleString()} THB.`
-      );
+      setPlanError(true);
     }
     if(!gender){
       genderOk = false
       setgenderError(true);
+    }
+    if (fnameOk &&lnameOk&&planOk&&genderOk) {
+      alert(
+        `Registration complete. Please pay money for ${computeTotalPayment().toLocaleString()} THB.`
+      );
     }
   };
 
